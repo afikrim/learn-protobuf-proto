@@ -1,7 +1,7 @@
 // define syntax used in proto file
 syntax = "proto3";
 // options used by gRPC golang plugin(not related to gRPC gateway)
-option go_package = "github.com/anshulrgoyal/grpc-gateway-demo;grpc_gateway_demo";
+option go_package = "github.com/afikrim/learn-protobuf-proto/hello_world;hello_world";
 
 // well know type by google, gRPC gateway uses HTTP annotation.
 import "google/api/annotations.proto";
@@ -13,14 +13,14 @@ message HelloRequest {
   string name = 1;
 }
 
-message HelloReply {
+message HelloResponse {
   string message = 1;
 }
 
 // a gRPC service
 service Greeter {
  // SayHello is a rpc call and a option is defined for it
-  rpc SayHello (HelloRequest) returns (HelloReply) {
+  rpc SayHello (HelloRequest) returns (HelloResponse) {
   // option type is http
     option (google.api.http) = {
     // this is url, for RESTfull/JSON api and method
